@@ -4,6 +4,7 @@ from pydub.silence import detect_silence
 import zipfile
 
 input_dir = input("请输入要导入的文件夹位置（回车确认）：")
+mac_input_dir = input_dir
 # input_dir = os.path.normpath(input_dir)
 
 if "\\" in input_dir:
@@ -22,10 +23,17 @@ else:
 
 #print(output_dir)
 is_zip = int(input("是否需要压缩（1需要，0不需要，回车确认）："))
-if is_zip:
-    zip_name = input("请输入要导出的压缩包名（直接回车则默认使用导入的文件夹名称）：")
-    if not zip_name:
-        zip_name = os.path.basename(input_dir)
+if "/" in input_dir: 
+    if is_zip:
+        zip_name = input("请输入要导出的压缩包名（直接回车则默认使用导入的文件夹名称）：")
+        if not zip_name:
+            zip_name = os.path.basename(mac_input_dir)
+else:
+    if is_zip:
+        zip_name = input("请输入要导出的压缩包名（直接回车则默认使用导入的文件夹名称）：")
+        if not zip_name:
+            zip_name = os.path.basename(input_dir)
+
 
 # input_dir += "/"
 # output_dir += "/"
