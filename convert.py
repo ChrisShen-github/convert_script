@@ -60,7 +60,7 @@ for file_name in os.listdir(input_dir):
         audio = audio.set_channels(1)
 
     # 剪切静音段
-    silent_ranges = detect_silence(audio, min_silence_len=5, silence_thresh=-28)
+    silent_ranges = detect_silence(audio, min_silence_len=1, silence_thresh=-28)
     print(f"音频长度：{len(audio)} ms")
     print(f"平均音量：{audio.dBFS} dBFS")
 
